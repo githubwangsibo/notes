@@ -1,7 +1,30 @@
-\documentclass[multixcb, 14pt]{amstext-l}
+\documentclass[multixcb, 14pt]{class/amstext-l}
 \usepackage{url}
 \usepackage{mathrsfs}
 \usepackage{hyperref}
+\usepackage{centernot}
+\hypersetup{
+%    bookmarks=true,         % show bookmarks bar?
+%    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+%	pdfborder={0 0 0}, 
+%    pdftoolbar=true,        % show Acrobat’s toolbar?
+%    pdfmenubar=true,        % show Acrobat’s menu?
+%    pdffitwindow=false,     % window fit to page when opened
+%    pdfstartview={FitH},    % fits the width of the page to the window
+%    pdftitle={My title},    % title
+%    pdfauthor={Author},     % author
+%    pdfsubject={Subject},   % subject of the document
+%    pdfcreator={Creator},   % creator of the document
+%    pdfproducer={Producer}, % producer of the document
+%    pdfkeywords={keyword1, key2, key3}, % list of keywords
+%    pdfnewwindow=true,      % links in new PDF window
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=[RGB]{0,128,128},          % color of internal links (change box color with linkbordercolor)
+%    citecolor=green,        % color of links to bibliography
+%    filecolor=cyan,         % color of file links
+%    urlcolor=magenta        % color of external links
+}
+\setcounter{chapter}{-1}
 
 \DeclareMathAlphabet{\mathzc}{OT1}{pzc}{m}{it}
 
@@ -14,6 +37,7 @@
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{notation}[theorem]{Notation}
 \newtheorem{warning}[theorem]{Warning}
+\newtheorem{example}[theorem]{Example}
 \newtheorem{xca}{Exercise}[section]
 
 \newcommand{\cs}[1]{\texttt{\char`\\#1}}
@@ -52,11 +76,15 @@
 
 \mainmatter
 
-\input{chapter/chapter1}
-\input{chapter/chapter2}
-\input{chapter/chapter3}
+\input{chapter/Preliminary}
+\input{chapter/Topology Space}
+\input{chapter/Continuous and Homeomorphism}
+\input{chapter/Metric Space}
+\input{chapter/Separation Axiom}
+\input{chapter/Product Space}
+\input{chapter/Quotient Space}
 
-\input{bibliography}
+\input{others/bibliography}
 
 
 \end{document}
