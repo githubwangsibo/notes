@@ -1,0 +1,70 @@
+\chapter{Convergence}
+
+\section{Uniform Convergence}
+
+\begin{definition}[uniform convergence]
+\end{definition}
+
+\section{Strong Convergence}
+
+\begin{definition}[strong convergence]
+\end{definition}
+
+\section{Weak Convergence}
+
+\begin{definition}[weak convergence]
+\end{definition}
+
+\begin{theorem}
+Given a normed vector space $(X, \Vert \cdot \Vert_{X})$. If $\{x_n\}$ in $X$ weakly converges to $x \in X$, then $\Vert x \Vert_{X} \leq \liminf_{n \to +\infty} \Vert x_n \Vert_{X}$. 
+\end{theorem}
+
+\begin{proof}
+We pick $f \in X^*$ such that $\Vert f \Vert = 1$ and $f x = \Vert x \Vert_{X}$, $\forall x \in X$. Due to \hyperref[theorem:Hahn-Banach theorem]{Theorem \ref*{theorem:Hahn-Banach theorem}}, $f$ must exist. 
+
+Then, 
+\begin{align*}
+\lVert x \rVert_{X}
+&= f x \\
+&= \lim_{n \to +\infty} f x_n \\
+&= \liminf_{n \to +\infty} f x_n \\
+&\leq \liminf_{n \to +\infty} \lVert f \rVert \lVert x_n \rVert_{X} \\
+&= \liminf_{n \to +\infty} \lVert x_n \rVert_{X}
+\end{align*}
+\end{proof}
+
+\begin{theorem}
+Given a compact operator $T \colon X \to Y$. If $\{x_n\}$ in $X$ weakly converges to $x \in X$, then $\{T x_n\}$ converges to $\{T x\}$ in $\Vert \cdot \Vert_{Y}$. 
+\end{theorem}
+
+\begin{proof}
+to do
+\end{proof}
+
+\begin{definition}[Schur's property]
+\end{definition}
+
+\begin{definition}[Radon–Riesz property]
+\end{definition}
+
+\begin{theorem}[Schur’s Lemma]
+\end{theorem}
+
+\begin{proof}
+to do
+\end{proof}
+
+\begin{corollary}
+Every real Hilbert space has the Radon–Riesz property. 
+\end{corollary}
+
+\begin{proof}
+to do
+\end{proof}
+
+\section{Weak* Convergence}
+
+
+
+
+

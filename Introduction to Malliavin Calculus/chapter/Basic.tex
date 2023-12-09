@@ -1,0 +1,38 @@
+\chapter{Basic}
+
+The following content can be found in 
+\cite{TheMalliavinCalculusandRelatedTopics} and 
+\cite{IntroductiontoMalliavinCalculus}. 
+For simplicity, we only consider 1-dimensional case. 
+
+\begin{definition}[centered Gaussian family]
+Given a complete probability space $(\Omega, \mathcal{F}, \Prob)$, 
+a subspace $W \subset$ $L^2(\Omega, \mathcal{F}, \Prob)$ is a centered Gaussian family, if it is closed, and all the elements of $W$ are
+Gaussian random variables with zero mean. 
+\end{definition}
+
+%\begin{lemma}
+%$L^2(\Omega, \mathcal{F}, P)$ is a complete normed vector space. 
+%\end{lemma}
+
+\begin{definition}[isonormal Gaussian process]
+A centered Gaussian family $W$ on $H$ is called isonormal Gaussian process, 
+if $H$ is a real and separable Hilbert space, 
+and $W = \{W(h): h \in H \}$
+, and $\E[W(f)W(g)] = \langle f, g \rangle_{H}$, $\forall f, g \in H$. 
+\end{definition}
+
+\begin{example}
+Given a Brownian motion $B_t$ with respect to $(\Omega, \mathcal{F}, \Prob)$. 
+$H = L^2([0, T], \mathcal{B}(0, T))$, 
+$W: h \mapsto \int_{0}^{T} h(s) d B_s$. 
+\end{example}
+
+\begin{property}
+    The map $h \mapsto W(h)$ is linear. 
+\end{property}
+
+\begin{proof}
+    One can verify that $\forall f, g \in H$, $\forall a, b \in \mathbb{R}$
+    , $\E[(W(af+bg) - aW(f) - bW(f))^2] = 0$ . 
+\end{proof}

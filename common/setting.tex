@@ -1,31 +1,50 @@
 \documentclass[multixcb, 14pt]{../common/amstext-l}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm} 
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{dsfont}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage[scheme=plain]{ctex}
+%\usepackage[cal=cm, calscaled=.94, bb=ams, frak=mma, frakscaled=.97, scr=boondox]{mathalpha} 
+\usepackage[cal=cm, calscaled=.94, bb=ams, frak=mma, frakscaled=.97, scr=dutchcal]{mathalpha} 
+\usepackage{bbm}
+\usepackage{enumitem}   
+
 \usepackage{url}
 \usepackage{mathrsfs}
-\usepackage{hyperref}
+\usepackage[citecolor=blue]{hyperref}
 \usepackage{centernot}
 \usepackage{mathtools}
 \hypersetup{
-%    bookmarks=true,         % show bookmarks bar?
-%    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
-%	pdfborder={0 0 0}, 
-%    pdftoolbar=true,        % show Acrobat’s toolbar?
-%    pdfmenubar=true,        % show Acrobat’s menu?
-%    pdffitwindow=false,     % window fit to page when opened
-%    pdfstartview={FitH},    % fits the width of the page to the window
-%    pdftitle={My title},    % title
-%    pdfauthor={Author},     % author
-%    pdfsubject={Subject},   % subject of the document
-%    pdfcreator={Creator},   % creator of the document
-%    pdfproducer={Producer}, % producer of the document
-%    pdfkeywords={keyword1, key2, key3}, % list of keywords
-%    pdfnewwindow=true,      % links in new PDF window
+    %    bookmarks=true,         % show bookmarks bar?
+    %    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    %	pdfborder={0 0 0}, 
+    %    pdftoolbar=true,        % show Acrobat’s toolbar?
+    %    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=true,     % window fit to page when opened
+    pdfstartview=FitH,    % fits the width of the page to the window
+    pdfpagelayout=OneColumn,  % Displays the document in one column; continuous scrolling
+    %    pdftitle={My title},    % title
+    %    pdfauthor={Author},     % author
+    %    pdfsubject={Subject},   % subject of the document
+    %    pdfcreator={Creator},   % creator of the document
+    %    pdfproducer={Producer}, % producer of the document
+    %    pdfkeywords={keyword1, key2, key3}, % list of keywords
+    %    pdfnewwindow=true,      % links in new PDF window
     colorlinks=true,       % false: boxed links; true: colored links
     linkcolor=[RGB]{0,128,128},          % color of internal links (change box color with linkbordercolor)
-%    citecolor=green,        % color of links to bibliography
-%    filecolor=cyan,         % color of file links
-%    urlcolor=magenta        % color of external links
+    %    citecolor=green,        % color of links to bibliography
+    %    filecolor=cyan,         % color of file links
+    %    urlcolor=magenta        % color of external links
 }
-\usepackage[UTF8, scheme=plain, punct=plain, zihao=false]{ctex}
+%\usepackage[UTF8, scheme=plain, punct=plain, zihao=false]{ctex}
 
 \DeclareMathAlphabet{\mathzc}{OT1}{pzc}{m}{it}
 
@@ -34,6 +53,7 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{property}[theorem]{Property}
 
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
@@ -64,4 +84,20 @@
 
 \newenvironment{sketch}{%
   \renewcommand{\proofname}{Sketch of the proof}\proof}{\endproof}
-  
+
+\newcounter{stepCounter}
+\newcommand{\step}[1]{ \textbf{step \arabic{stepCounter}\stepcounter{stepCounter}: }}
+
+%\newcommand{\E}{\operatorname{\rm I\kern-.3em E}}
+\newcommand{\E}{\operatorname{\mathbb{E}}}
+%\newcommand{\Prob}{\operatorname{\rm I\kern-0.2em P}}
+\newcommand{\Prob}{\operatorname{\mathds{P}}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\Cov}{\operatorname{Cov}}
+\newcommand{\Ind}{\operatorname{\mathbbm{1}}}
+
+\DeclareMathOperator*{\argmax}{argmax} % thin space, limits underneath in displays
+\DeclareMathOperator*{\argmin}{argmin} % thin space, limits underneath in displays
+
+
+\bibliographystyle{apalike}

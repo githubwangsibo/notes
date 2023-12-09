@@ -1,0 +1,264 @@
+\chapter{Derivative operator}
+
+\begin{notation}
+$\mathcal{S} \coloneqq 
+\{f(W(h_1), \dots, W(h_n)) : \forall n \in \mathbb{N}, f \in C_{pol}^{\infty}(\mathbb{R}^n, \mathbb{R}), h_1, \dots, h_n \in H
+\}$. 
+\end{notation}
+
+\begin{example}
+$e^x \notin C_{pol}^{\infty}(\mathbb{R}, \mathbb{R})$
+and $x^3 \in C_{pol}^{\infty}(\mathbb{R}, \mathbb{R})$. 
+\end{example}
+
+\begin{notation}
+$\mathcal{S}_{0} \coloneqq 
+\{f(W(h_1), \dots, W(h_n)) : \forall n \in \mathbb{N}, f \in C_{0}^{\infty}(\mathbb{R}^n, \mathbb{R}), h_1, \dots, h_n \in H
+\}$.
+\end{notation}
+
+\begin{example}
+$x^3 \notin C_{0}^{\infty}(\mathbb{R}, \mathbb{R})$
+and $1 \notin C_{0}^{\infty}(\mathbb{R}, \mathbb{R})$. 
+\end{example}
+
+\begin{proposition}
+\label{proposition:smoothing varphi}
+$C_{0}^{\infty}(\mathbb{R}^n, \mathbb{R}) \neq \emptyset$. 
+\end{proposition}
+
+\begin{proof}
+$\varphi(x) \coloneqq e^{- \frac{1}{1- \lvert x \rvert^2}} $, 
+if $\lvert x \rvert < 1$, 
+and $\coloneqq 0$, otherwise. 
+\end{proof}
+
+\begin{lemma}
+$\mathcal{S}_{0}$ is dense in $\mathcal{S}$, with $L^2(\mathcal{G})$, where $\mathcal{G} \coloneqq \sigma(S)$. 
+\end{lemma}
+
+\begin{proof}
+Using the similar technique as Lemma 4.3.1 (Page 50) in
+\cite{StochasticDifferentialEquationsAnIntroductionwithApplications}. 
+
+Because $H$ is a separable Hilbert space, 
+$\exists \{h_n\}_{n \in \mathbb{N}} \in H$, such that $\{h_n\}_{n}$ is dense in  $H$. Define $A_n \coloneqq \sigma(W(h_i): i \leq n)$, then $A_n \subset A_{n+1} \subset \mathcal{G}$ and $\lim_{n \to +\infty} A_n = \mathcal{G}$. 
+
+So $\forall F \in \mathcal{S}$ with $L^2(\mathcal{G})$, 
+we have $\E[F | \mathcal{A}_n] 
+\xrightarrow[n \to +\infty]{L^2} 
+\E[F | \mathcal{G}] = F $, 
+from Corollary C.9 (Page 325) in 
+\cite{StochasticDifferentialEquationsAnIntroductionwithApplications}. 
+
+From \hyperref[theorem:Doob-Dynkin Lemma]
+{Theorem \ref*{theorem:Doob-Dynkin Lemma}}, 
+$\forall n \in \mathbb{N}$, $\exists F_n \in L^2(\mathbb{R}^n, \mathbb{R})$, 
+such that $\E[F | \mathcal{A}_n] = F_n(W(h_1), \dots, W(h_n))$. 
+
+In addition, we know that $\forall n \in \mathbb{N}, C_{0}^{\infty}(\mathbb{R}^n, \mathbb{R})$ is dense in $L^2(\mathbb{R}^n, \mathbb{R})$, 
+from \hyperref[theorem:compact support smooth function is dense in L^2]
+{Theorem \ref*{theorem:compact support smooth function is dense in L^2}}. 
+
+Finally, $F$ can be approximated by some elements of $\mathcal{S}_{0}$ in $L^2$, by Minkowski's inequality.  
+\end{proof}
+
+\begin{definition}[derivative]
+Derivative operator $D : \mathcal{S} \to L^2(\Omega; H)$, 
+$DF = \sum_{i=1}^{n} \frac{\partial }{\partial x_i} f(W(h_1), \dots, W(h_n)) h_i$. 
+\end{definition}
+
+\begin{lemma}
+\label{lemma:rule}
+$\forall F, G \in \mathcal{S}$, 
+$D(FG) = F(DG) + G(DF)$. 
+\end{lemma}
+
+\begin{proof}
+Multiplication of smooth functions is still a smooth function. Then using the definition. 
+\end{proof}
+
+\begin{proposition}
+\label{proposition:one variable}
+$\forall F \in \mathcal{S}$, $\forall h \in H$, 
+$\E[\langle DF, h \rangle_{H}] 
+= \E[FW(h)]$. 
+\end{proposition}
+
+\begin{proof}
+Without loss of generality, we only prove the case 
+when $F = f(W(h), \dots, W(e_n))$ and $\lVert h \rVert_{H} = 1$, 
+where $h, e_1, \dots, e_n$ are orthogonal. 
+
+Thus, 
+\begin{equation*}
+\begin{aligned}
+&\E[\langle DF, h \rangle_{H}]  \\
+= &\E[\frac{\partial}{\partial x_1} f(W(h), \dots, W(e_n))]
+&\text{} \\
+= &\int_{\mathbb{R}^n} \frac{\partial}{\partial x_1} f(x_1, \dots, x_n) \phi(x_1, \dots, x_n) d x_1\dots d x_n 
+&\text{} \\
+= &\int_{\mathbb{R}^n} f(x_1, \dots, x_n) \phi(x_1, \dots, x_n) x_1 d x_1\dots d x_n 
+&\text{} \\
+= &\E[f(W(h), \dots, W(e_n))W(h)]
+&\text{} \\
+= &\E[FW(h)]
+&\text{} \\
+\end{aligned}
+\end{equation*}
+
+where $\phi$ is the density of $n$ variable standard normal distribution.
+\end{proof}
+
+\begin{proposition}
+\label{proposition:2 terms}
+$\forall F, G \in \mathcal{S}$, $\forall h \in H$, 
+$\E[G \langle DF, h \rangle_{H}] 
++  \E[F \langle DG, h \rangle_{H}] 
+= \E[FGW(h)]$. 
+\end{proposition}
+
+\begin{proof}
+Define $X \coloneqq FG$, then $X \in \mathcal{S}$. 
+Using \hyperref[lemma:rule]
+{Lemma \ref*{lemma:rule}}
+and 
+\hyperref[proposition:one variable]
+{Proposition \ref*{proposition:one variable}}. 
+\end{proof}
+
+\begin{notation}
+$\forall f \in \mathcal{S}$, 
+$\lVert f \rVert_{1, 2}^2 \coloneqq 
+\lVert f \rVert_{L^2(\Omega)}^2
++ \lVert Df \rVert_{L^2(\Omega, H)}^2$
+\end{notation}
+
+\begin{proposition}
+\label{proposition:Soblev norm}
+$\lVert \cdot \rVert_{1, 2}$ is a norm. 
+\end{proposition}
+
+\begin{proof}
+To prove sub-additivity, we will apply Minkowski's inequality. 
+\end{proof}
+
+\begin{notation}
+Let $(\mathbb{D}^{1, 2}, \lVert \cdot \rVert_{1, 2})$ 
+be the closure of $(\mathcal{S}, \lVert \cdot \rVert_{1, 2})$. 
+\end{notation}
+
+\begin{lemma}
+\label{lemma:D is well defined}
+Given $\{X_n\}_n \in \mathcal{S}$, 
+if $X_n \xrightarrow{L^2(\Omega)} 0$, 
+and $DX_n \xrightarrow{L^2(\Omega, H)} U$, 
+then $U = 0$ almost surely.
+\end{lemma}
+
+\begin{proof}
+We know that $\lim_{n \to +\infty} \E[X_n^2] = 0$, 
+and $\lim_{n \to +\infty} 
+\E[ \langle DX_n - U , DX_n - U \rangle_{H} ] = 0$. 
+
+$\forall h \in H$ and $\forall F \in \mathcal{S}_{0}$,  
+\begin{equation*}
+\begin{aligned}
+&\E[F \langle U, h \rangle_{H}]  \\
+= &\lim_{n \to +\infty} \E[F \langle DX_n, h \rangle_{H}]
+&\text{(continuity of inner product)} \\
+= &\lim_{n \to +\infty} 
+\E[- X_n \langle DF, h \rangle_{H}
++ X_n F W(h)]
+&\text{(\hyperref[proposition:2 terms]
+{Proposition \ref*{proposition:2 terms}})} \\
+= & 0
+&\text{(Cauchy–Schwarz inequality)} \\
+\end{aligned}
+\end{equation*}
+
+Because $F \in \mathcal{S}_{0}$, we know $\langle U, h \rangle_{H} = 0$, 
+from \hyperref[theorem:zero is the only vector orthogonal to dense]
+{Theorem \ref*{theorem:zero is the only vector orthogonal to dense}}. 
+Also, because $h \in H$, $U = 0$ almost surely. 
+\end{proof}
+
+\begin{theorem}
+Derivative operator $D: \mathbb{D}^{1, 2} \to L^2(\Omega, H)$ is well defined.  
+\end{theorem}
+
+\begin{proof}
+From \hyperref[lemma:D is well defined]
+{Lemma \ref*{lemma:D is well defined}}, 
+we know that $\forall X \in \mathbb{D}^{1, 2}$, $\exists \{X_n\} \in \mathcal{S}$
+, such that $X_n \xrightarrow{L^2(\Omega)} X$,
+$DX_n \xrightarrow{L^2(\Omega, H)} U$
+and $U \in L^2(\Omega, H)$, then $DX \coloneqq \lim_{n \to +\infty} DX_n$. 
+\end{proof}
+
+\begin{theorem}[Chain rule]
+Given $g \in C^{1}(\mathbb{R}^d, \mathbb{R})$ 
+with bounded partial derivatives
+and $F_i \in \mathbb{D}^{1, 2}$, $i \in \{1, \dots, d\}$. 
+Then $g(F_1, \dots, F_d) \in \mathbb{D}^{1, 2}$ 
+and $D(g(F_1, \dots, F_d))
+= \sum_{i=1}^{d} \frac{\partial}{\partial x_i}g(F_1, \dots, F_d) DF_i$. 
+\end{theorem}
+\setcounter{stepCounter}{1}
+\begin{proof}
+For simplicity, we only prove the case when $d= 1$. 
+
+\step{} When $F \in \mathcal{S}$. 
+
+Because the composition of differentiable function and smooth function is still a smooth function, 
+we have $g(F) \in \mathcal{S} \subset \mathbb{D}^{1, 2}$ and the chain rule can be obtained easily. 
+
+\step{} When $F \notin \mathcal{S}$. 
+
+$\exists \{F_k\}_{k \in \mathbb{N}} \in \mathcal{S}$, 
+such that $F_k \xrightarrow{L^2(\Omega)} F$ 
+and $DF_k \xrightarrow{L^2(\Omega, H)} DF$. 
+
+In addition, $\forall \varepsilon > 0$, 
+define $\varphi_{\varepsilon} \coloneqq \frac{1}{\varepsilon}\varphi(\frac{x}{\varepsilon})$, 
+where $\varphi(x)$ is the same as 
+\hyperref[proposition:smoothing varphi]
+{Lemma \ref*{proposition:smoothing varphi}}. 
+Meanwhile define $g_{\varepsilon} \coloneqq g \ast \varphi_{\varepsilon}$,
+where $\ast$ is the convolution operator. 
+Clearly, $g_{\varepsilon} \in C_{0}^{\infty} (\mathbb{R}, \mathbb{R})$, 
+and $g_{\varepsilon} \xrightarrow[\varepsilon \to 0]{pointwise} g$.
+
+So by definition, we have 
+$D(g_{\varepsilon}(F_k)) = \frac{d}{dx} g_{\varepsilon}(F_k) DF_k$. 
+
+$\forall \varepsilon > 0$ and $\forall k \in \mathbb{N}$, 
+by Minkowski's inequality
+we have $\lVert g_{\varepsilon}(F_k) - g_{}(F) \rVert_{L^2(\Omega)}
+\leq \lVert g_{\varepsilon}(F_k) - g_{}(F_k) \rVert_{L^2(\Omega)}
++ \lVert g_{}(F_k) - g_{}(F) \rVert_{L^2(\Omega)}$. 
+
+In addition, 
+$\lVert \frac{d}{dx}g_{}(F)DF - \frac{d}{dx} g_{\varepsilon}(F_k)DF_k \rVert_{L^2(\Omega, H)}
+\leq \lVert \frac{d}{dx}g_{}(F)DF - \frac{d}{dx} g_{}(F_k)DF \rVert_{L^2(\Omega, H)}
++ \lVert \frac{d}{dx} g_{}(F_k)DF - \frac{d}{dx} g_{\varepsilon}(F_k)DF \rVert_{L^2(\Omega, H)}
++ \lVert \frac{d}{dx} g_{\varepsilon}(F_k)DF - \frac{d}{dx} g_{\varepsilon}(F_k)DF_k  \rVert_{L^2(\Omega, H)}$, 
+
+Because $D$ is well defined, we have $g_{}(F) \in \mathbb{D}^{1, 2}$ and the chain rule. 
+
+\end{proof}
+
+%\begin{theorem}
+%Given $X \in \mathbb{D}^{1, 2}$ and $X \in \mathcal{F}_{T}$
+%, then $X = \E[X] + \int_{0}^{T} \E[D_{t} X| \mathcal{F}_{t}] d W_t$. 
+%\end{theorem}
+%
+%\begin{proof}
+%The proof needs result from divergence operator, which is out of scope of this report. 
+%\end{proof}
+%
+%\begin{remark}
+%The above theorem can be treated as an analogy of 
+%martingale representation theorem. 
+%\end{remark}
+

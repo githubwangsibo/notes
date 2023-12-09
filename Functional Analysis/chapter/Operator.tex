@@ -1,0 +1,244 @@
+\chapter{Operator}
+
+\section{Basic}
+
+\begin{definition}[kernel]
+\end{definition}
+
+\begin{definition}[range/image]
+\end{definition}
+
+\begin{definition}[operator norm]
+\end{definition}
+
+\begin{theorem}[equivalent definition of operator norm]
+The following statements are equivalent: 
+\end{theorem}
+
+\begin{proof}
+to do
+\end{proof}
+
+\begin{warning}
+Not all operator has its norm. 
+\end{warning}
+
+\section{Linear Operator}
+
+\begin{definition}[linear operator]
+\end{definition}
+
+\begin{notation}[set of linear operator]
+$\mathcal{L}(X, Y)$
+\end{notation}
+
+\begin{definition}[linear bounded operator]
+\end{definition}
+
+\begin{notation}[set of linear bounded operator]
+$\mathcal{B}(X, Y)$
+\end{notation}
+
+\begin{theorem}
+Given normed vector spaces $X, Y$ and a linear operator $T \colon X \to Y$. $\ker T$ is a linear subspace in $X$. 
+\end{theorem}
+
+\begin{theorem}
+Given normed vector spaces $X, Y$ and a linear operator $T \colon X \to Y$. $T(X)$ is a linear subspace in $Y$. 
+\end{theorem}
+
+\begin{theorem}
+Given normed vector spaces $X, Y$ and a linear operator $T \colon X \to Y$. $T$ is injective $\iff$ $\ker T = \{0\}$. 
+\end{theorem}
+
+\begin{theorem}
+Given finite normed vector spaces $X, Y$ and a linear operator $T \colon X \to Y$. $T$ is injective $\iff$ $T$ is surjective. 
+\end{theorem}
+
+\begin{proof}
+to do
+\end{proof}
+
+\section{Bounded Operator}
+\begin{definition}[bounded operator]
+\end{definition}
+
+\begin{theorem}[equivalent definition of linear bounded operator]
+Given normed vector spaces $X, Y$ and a linear operator $T \colon X \to Y$. The following statements are equivalent: 
+\end{theorem}
+
+\begin{proof}
+to do
+\end{proof}
+
+\begin{theorem}
+Given a normed vector spaces $X, Y$ and a linear bounded operator $T \colon X \to Y$. $\ker T$ is always closed. 
+\end{theorem}
+
+\begin{proof}[Sketch of the Proof]
+Because every singleton set in a normed vector space is closed. 
+\end{proof}
+
+\begin{theorem}
+Given normed vector spaces $X, Y, Z$ and operators $T \colon X \to Y, S \colon Y \to Z$. If $S, T$ are bounded, then $\Vert S T \Vert \leq \Vert T \Vert \Vert S \Vert$. 
+\end{theorem}
+
+\begin{corollary}
+Given normed vector spaces $X, Y$ and an operator $T \colon X \to Y$. $\forall n \in \mathbb{N}$, $\Vert T^n \Vert \leq \Vert T \Vert^n$. 
+\end{corollary}
+
+\begin{theorem}
+Given any normed vector space $X, Y$ and an operator $T \colon X \to Y$. If $X$ is finite and $T$ is linear, then $T$ is always bounded. 
+\end{theorem}
+
+\begin{proof}
+to do
+\end{proof}
+
+\begin{theorem}[set of bounded linear operators is Banach]
+Given normed vector spaces $X, Y$. If $Y$ is Banach, then $\mathcal{B}(X, Y)$ is Banach. 
+\end{theorem}
+
+\begin{proof}
+We pick any Cauchy sequence $\{T_n\}$ in $\mathcal{B}(X, Y)$. Then, it is obvious that $\forall \varepsilon \in \mathbb{R}^+$, $\exists N(\varepsilon) \in \mathbb{N}$, such that $\Vert T_i - T_j \Vert < \varepsilon$, $\forall i, j > N$.
+
+Also, it is true that $\forall x \in X$, $\forall n, m \in \mathbb{N}$, $\Vert T_n x - T_m x \Vert_{Y} = \Vert (T_n - T_m) x \Vert_{Y} \leq \Vert T_n - T_m \Vert \Vert x \Vert_{X}$. 
+
+So it is true that $\forall x \in X$, $\{T_n x\}$ is a Cauchy sequence in $Y$. Because $Y$ is complete, $\forall x \in X$, $\exists y \in Y$ such that $y = \lim_{n \to +\infty} T_n x$. In another word, there exists a well defined operator $T$: 
+\begin{align*}
+T \colon X &\to Y \\
+x &\mapsto T x = \lim_{n \to +\infty} T_n x
+\end{align*}
+
+Define $S \coloneqq \{x \in X \colon \Vert x \Vert_{X} = 1\}$. 
+
+Next, we will prove that $T \in \mathcal{B}(X, Y)$. 
+
+Define $M \coloneqq \sup_{n \in \mathbb{N}} \Vert T_n \Vert$, and it is true that $M < +\infty$. It is known that $\forall \varepsilon \in \mathbb{R}^+$, $\forall x \in X$, $\exists N(\varepsilon, x) \in \mathbb{N}$, such that $\Vert T x - T_n x \Vert_{Y} < \varepsilon$, $\forall n > N$. So $\forall \varepsilon \in \mathbb{R}^+$, $\forall x \in S$, $\forall n > N(\varepsilon, x)$, $\Vert T x \Vert_{Y} = \Vert T x - T_n x + T_n x \Vert_{Y} \leq \Vert T x - T_n x \Vert_{Y} + \Vert T_n x \Vert_{Y} \leq \varepsilon + \Vert T_n \Vert \Vert x \Vert_{X} \leq M + \varepsilon$. So $T$ is bounded. In addition, it is trivial to show that $T$ is linear. 
+
+Next, we will prove that $\lim_{n \to +\infty} \Vert T - T_n \Vert = 0$.
+
+It is true that $\forall n \in \mathbb{N}$, $\Vert T - T_n \Vert_{} = \sup_{x \in S} \Vert (T - T_n)x \Vert_{Y}$. Also, it is true that $\forall x \in S$, $\lim_{n \to +\infty} \Vert (T - T_n)x \Vert_{Y} = 0$. So, $\lim_{n \to +\infty} \Vert T - T_n \Vert = 0$.
+\end{proof}
+
+\begin{corollary}
+Dual space of any normed vector spaces is a Banach space.
+\end{corollary}
+
+\begin{theorem}[extension theorem]
+\end{theorem}
+
+\begin{proof}
+to do
+\end{proof}
+
+\begin{theorem}[open mapping theorem]
+\end{theorem}
+
+\begin{proof}
+to do
+\end{proof}
+
+\begin{theorem}[bounded inverse theorem]
+\end{theorem}
+
+\begin{proof}
+to do
+\end{proof}
+
+\begin{theorem}[uniform boundedness principle]
+\end{theorem}
+
+\begin{proof}
+to do
+\end{proof}
+
+\begin{theorem}[等价范数定理]
+\end{theorem}
+
+\begin{proof}
+to do
+\end{proof}
+
+\begin{definition}[closed graph]
+\end{definition}
+
+\begin{theorem}[closed graph theorem]
+\end{theorem}
+
+\begin{proof}
+to do
+\end{proof}
+
+\section{Unbounded Operator}
+
+\section{Compact Operator}
+
+\begin{definition}[compact operator]
+\end{definition}
+
+\begin{notation}[set of linear compact operator]
+$\mathcal{K}(X, Y)$
+\end{notation}
+
+\begin{theorem}
+$\mathcal{K}(X, Y)$ is closed in $\mathcal{B}(X, Y)$. 
+\end{theorem}
+
+\begin{proof}
+to do
+\end{proof}
+
+\begin{corollary}
+Given a sequence of compact operator $\{K_n\}$, If it is convergent to $K$. then $K$ is a compact operator. 
+\end{corollary}
+
+\begin{example}[a linear bounded operator might not be compact]
+\end{example}
+
+\begin{theorem}
+Given a compact operator $K$ and a linear bounded operator $B$. $K B$ and $B K$ are compact operators. 
+\end{theorem}
+
+\begin{proof}
+to do
+\end{proof}
+
+\section{Functional}
+
+\begin{definition}[linear functional]
+\end{definition}
+
+\begin{definition}[dual space, linear bounded functional]
+\end{definition}
+
+\begin{notation}[set of linear functional]
+$\mathcal{L}(X, \mathbb{R})$ or $\mathcal{L}(X, \mathbb{C})$ or $X^*$
+\end{notation}
+
+\begin{notation}[set of linear bounded functional]
+$\mathcal{B}(X, \mathbb{R})$ or $\mathcal{B}(X, \mathbb{C})$ or $X^*$
+\end{notation}
+
+\begin{definition}[reflexive space]
+\end{definition}
+
+\begin{theorem}[Hahn-Banach theorem]\label{theorem:Hahn-Banach theorem}
+\end{theorem}
+
+\begin{proof}
+to do
+\end{proof}
+
+\section{Contraction Mapping}
+
+\begin{theorem}[Picard–Lindelöf theorem]
+\end{theorem}
+
+\begin{theorem}[Peano existence theorem]
+\end{theorem}
+
+\begin{theorem}[Osgood uniqueness theorem]
+\end{theorem}
+
+
