@@ -1,34 +1,58 @@
+\documentclass[a4paper, oneside]{book}
 \input{../common/setting}
+
+\addbibresource{./others/reference.bib} 
+
+\makeindex[intoc]
 
 \setcounter{chapter}{-1}
 
+\GlsXtrLoadResources[
+    src={./others/List of Symbols},% entries in 'greek-symbols.bib'
+    type=symbols,% put these entries in the 'symbols' glossary
+    save-locations=true, % don't save locations
+    sort=letter-case,
+    symbol-sort-fallback=name,
+    category={same as entry},
+]
+
+\makeatletter
+\renewcommand{\cleardoublepage}{\relax
+  \clearpage
+  \if@twoside \ifodd\c@page\relax\else
+  \thispagestyle{empty}%
+  \tikz[remember picture, overlay] \node  at (current page.center)
+    {\large This page intentionally left blank};\newpage\fi\fi}
+\makeatother
+
 \begin{document}
-\begin{sloppypar}
+%\begin{sloppypar}
 
 \frontmatter
 
 \makeatletter
-
 \makeatother
 
 \title{Introduction to Malliavin Calculus}
-\author{WANG SIBO\\ \today}
-
+\author{WANG SIBO\\ }
+%\date{}
 \maketitle
 
 \tableofcontents
 
+\printunsrtglossary[type=symbols,style=long,title={List of Symbols}]
+
 \mainmatter
 
-\input{chapter/Preliminary}
-\input{chapter/Basic}
-\input{chapter/Derivative operator}
-\input{chapter/Wiener chaos}
-\input{chapter/Multiple integrals}
+\include{chapter/Preliminary}
+\include{chapter/Basic}
+\include{chapter/Derivative operator}
+\include{chapter/Wiener chaos}
+\include{chapter/Multiple integrals}
 
-%\input{./bibliography}
-\bibliographystyle{apalike}
-\bibliography{./others/reference}
+\printindex
 
-\end{sloppypar}
+\printbibliography[heading=bibintoc,title={References}]
+
+%\end{sloppypar}
 \end{document}
